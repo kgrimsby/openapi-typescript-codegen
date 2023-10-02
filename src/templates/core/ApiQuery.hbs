@@ -5,5 +5,6 @@ export type ApiQuery<T, R> = {
     readonly method: string;
     readonly name: string;
     readonly inputs: string[];
-    params?: R
+    readonly paramTranslator: { [key: string]: string }
+    params?: R;
 };
