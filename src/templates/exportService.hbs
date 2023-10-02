@@ -1,5 +1,6 @@
 {{>header}}
 
+import type { ApiQuery } from '../core/ApiQuery'
 {{#equals @root.httpClient 'angular'}}
 {{#if @root.exportClient}}
 import { Injectable } from '@angular/core';
@@ -48,6 +49,9 @@ export class {{{name}}}{{{@root.postfix}}} {
 	{{/if}}
 
 	{{#each operations}}
+	static {{{name}}}Options: ApiQuery<{{>result}}> = {
+		path: '{{path}}',
+	}
 	/**
 	{{#if deprecated}}
 	 * @deprecated

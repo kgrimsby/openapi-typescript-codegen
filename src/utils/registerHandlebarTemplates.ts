@@ -2,23 +2,26 @@ import Handlebars from 'handlebars/runtime';
 
 import { HttpClient } from '../HttpClient';
 import templateClient from '../templates/client.hbs';
+import templateCoreApiError from '../templates/core/ApiError.hbs';
+import templateCoreApiQuery from '../templates/core/ApiQuery.hbs';
+import templateCoreApiRequestOptions from '../templates/core/ApiRequestOptions.hbs';
+import templateCoreApiResult from '../templates/core/ApiResult.hbs';
+import templateCoreBaseHttpRequest from '../templates/core/BaseHttpRequest.hbs';
+import templateCancelablePromise from '../templates/core/CancelablePromise.hbs';
+import templateCoreHttpRequest from '../templates/core/HttpRequest.hbs';
+import templateCoreSettings from '../templates/core/OpenAPI.hbs';
 import angularGetHeaders from '../templates/core/angular/getHeaders.hbs';
 import angularGetRequestBody from '../templates/core/angular/getRequestBody.hbs';
 import angularGetResponseBody from '../templates/core/angular/getResponseBody.hbs';
 import angularGetResponseHeader from '../templates/core/angular/getResponseHeader.hbs';
 import angularRequest from '../templates/core/angular/request.hbs';
 import angularSendRequest from '../templates/core/angular/sendRequest.hbs';
-import templateCoreApiError from '../templates/core/ApiError.hbs';
-import templateCoreApiRequestOptions from '../templates/core/ApiRequestOptions.hbs';
-import templateCoreApiResult from '../templates/core/ApiResult.hbs';
 import axiosGetHeaders from '../templates/core/axios/getHeaders.hbs';
 import axiosGetRequestBody from '../templates/core/axios/getRequestBody.hbs';
 import axiosGetResponseBody from '../templates/core/axios/getResponseBody.hbs';
 import axiosGetResponseHeader from '../templates/core/axios/getResponseHeader.hbs';
 import axiosRequest from '../templates/core/axios/request.hbs';
 import axiosSendRequest from '../templates/core/axios/sendRequest.hbs';
-import templateCoreBaseHttpRequest from '../templates/core/BaseHttpRequest.hbs';
-import templateCancelablePromise from '../templates/core/CancelablePromise.hbs';
 import fetchGetHeaders from '../templates/core/fetch/getHeaders.hbs';
 import fetchGetRequestBody from '../templates/core/fetch/getRequestBody.hbs';
 import fetchGetResponseBody from '../templates/core/fetch/getResponseBody.hbs';
@@ -37,14 +40,12 @@ import functionIsString from '../templates/core/functions/isString.hbs';
 import functionIsStringWithValue from '../templates/core/functions/isStringWithValue.hbs';
 import functionIsSuccess from '../templates/core/functions/isSuccess.hbs';
 import functionResolve from '../templates/core/functions/resolve.hbs';
-import templateCoreHttpRequest from '../templates/core/HttpRequest.hbs';
 import nodeGetHeaders from '../templates/core/node/getHeaders.hbs';
 import nodeGetRequestBody from '../templates/core/node/getRequestBody.hbs';
 import nodeGetResponseBody from '../templates/core/node/getResponseBody.hbs';
 import nodeGetResponseHeader from '../templates/core/node/getResponseHeader.hbs';
 import nodeRequest from '../templates/core/node/request.hbs';
 import nodeSendRequest from '../templates/core/node/sendRequest.hbs';
-import templateCoreSettings from '../templates/core/OpenAPI.hbs';
 import templateCoreRequest from '../templates/core/request.hbs';
 import xhrGetHeaders from '../templates/core/xhr/getHeaders.hbs';
 import xhrGetRequestBody from '../templates/core/xhr/getRequestBody.hbs';
@@ -98,6 +99,7 @@ export interface Templates {
         apiError: Handlebars.TemplateDelegate;
         apiRequestOptions: Handlebars.TemplateDelegate;
         apiResult: Handlebars.TemplateDelegate;
+        apiQuery: Handlebars.TemplateDelegate,
         cancelablePromise: Handlebars.TemplateDelegate;
         request: Handlebars.TemplateDelegate;
         baseHttpRequest: Handlebars.TemplateDelegate;
@@ -130,6 +132,7 @@ export const registerHandlebarTemplates = (root: {
             apiError: Handlebars.template(templateCoreApiError),
             apiRequestOptions: Handlebars.template(templateCoreApiRequestOptions),
             apiResult: Handlebars.template(templateCoreApiResult),
+            apiQuery: Handlebars.template(templateCoreApiQuery),
             cancelablePromise: Handlebars.template(templateCancelablePromise),
             request: Handlebars.template(templateCoreRequest),
             baseHttpRequest: Handlebars.template(templateCoreBaseHttpRequest),
