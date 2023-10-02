@@ -1,5 +1,9 @@
 {{>header}}
 
-export type ApiQuery<T> = {
+export type ApiQuery<T, R> = {
 	readonly path: string;
+    readonly method: string;
+    readonly name: string;
+    readonly inputs: string[];
+    params?: R
 };

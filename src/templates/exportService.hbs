@@ -37,6 +37,15 @@ import { request as __request } from '../core/request';
   providedIn: 'root',
 })
 {{/equals}}
+
+{{#each operations}}
+export type {{{name}}}Input = {
+	{{#each parameters}}
+	{{{name}}}{{>isRequired}}: {{>type}}
+	{{/each}}
+}
+{{/each}}
+
 export class {{{name}}}{{{@root.postfix}}} {
 	{{#if @root.exportClient}}
 
@@ -49,8 +58,15 @@ export class {{{name}}}{{{@root.postfix}}} {
 	{{/if}}
 
 	{{#each operations}}
-	static {{{name}}}Options: ApiQuery<{{>result}}> = {
+	static {{{name}}}Options: ApiQuery<{{>result}}, {{{name}}}Input> = {
 		path: '{{path}}',
+		method: '{{method}}',
+		name: '{{name}}',
+		inputs: [
+			{{#each parameters}}
+			'{{{name}}}',
+			{{/each}}
+		]
 	}
 	/**
 	{{#if deprecated}}
