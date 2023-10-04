@@ -71,6 +71,9 @@ export class {{{name}}}{{{@root.postfix}}} {
 			{{#each parametersQuery}}
 			'{{{name}}}': '{{{prop}}}',
 			{{/each}}
+			{{#each parametersPath}}
+			'{{{name}}}': '{{{prop}}}',
+			{{/each}}
 		}
 	}
 	/**
