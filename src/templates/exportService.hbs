@@ -40,9 +40,23 @@ import { request as __request } from '../core/request';
 
 {{#each operations}}
 export type {{{name}}}Input = {
-	{{#each parameters}}
-	{{{name}}}{{>isRequired}}: {{>type}}
-	{{/each}}
+	{{#if parametersQuery}}
+	query: {
+		{{#each parametersQuery}}
+		{{{name}}}{{>isRequired}}: {{>type}}
+		{{/each}}
+	},
+	{{/if}}
+	{{#if parametersPath}}
+	path: {
+		{{#each parametersPath}}
+		{{{name}}}{{>isRequired}}: {{>type}}
+		{{/each}}
+	},
+	{{/if}}
+	{{#if parametersBody}}
+	body: {{>type parametersBody}},
+	{{/if}}
 }
 {{/each}}
 
@@ -58,8 +72,9 @@ export class {{{name}}}{{{@root.postfix}}} {
 	{{/if}}
 
 	{{#each operations}}
+
 	static {{{name}}}Options: ApiQuery<{{>result}}, {{{name}}}Input> = {
-		path: '{{path}}',
+		url: '{{path}}',
 		method: '{{method}}',
 		name: '{{name}}',
 		inputs: [
@@ -67,15 +82,22 @@ export class {{{name}}}{{{@root.postfix}}} {
 			'{{{name}}}',
 			{{/each}}
 		],
-		paramTranslator: {
+		{{#if parametersQuery}}
+		query: {
 			{{#each parametersQuery}}
 			'{{{name}}}': '{{{prop}}}',
 			{{/each}}
+		},
+		{{/if}}
+		{{#if parametersPath}}
+		path: {
 			{{#each parametersPath}}
 			'{{{name}}}': '{{{prop}}}',
 			{{/each}}
 		}
+		{{/if}}
 	}
+
 	/**
 	{{#if deprecated}}
 	 * @deprecated

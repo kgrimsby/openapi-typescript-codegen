@@ -1,10 +1,11 @@
 {{>header}}
 
 export type ApiQuery<T, R> = {
-	readonly path: string;
+	readonly url: string;
     readonly method: string;
     readonly name: string;
     readonly inputs: string[];
-    readonly paramTranslator: { [key: string]: string }
+    readonly query?: { [key: string]: string }
+    readonly path?: { [key: string]: string }
     params?: R;
 };
