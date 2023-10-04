@@ -85,14 +85,14 @@ export class {{{name}}}{{{@root.postfix}}} {
 		{{#if parametersQuery}}
 		query: {
 			{{#each parametersQuery}}
-			'{{{name}}}': '{{{prop}}}',
+			'{{{prop}}}': '{{{name}}}',
 			{{/each}}
 		},
 		{{/if}}
 		{{#if parametersPath}}
 		path: {
 			{{#each parametersPath}}
-			'{{{name}}}': '{{{prop}}}',
+			'{{{prop}}}': '{{{name}}}',
 			{{/each}}
 		}
 		{{/if}}
