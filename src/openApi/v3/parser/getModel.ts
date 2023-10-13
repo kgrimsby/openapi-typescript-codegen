@@ -22,6 +22,7 @@ export const getModel = (
         base: 'any',
         template: null,
         link: null,
+        title: definition.title || null,
         description: definition.description || null,
         deprecated: definition.deprecated === true,
         isDefinition,
@@ -62,12 +63,14 @@ export const getModel = (
     if (definition.enum && definition.type !== 'boolean') {
         const enumerators = getEnum(definition.enum);
         const extendedEnumerators = extendEnum(enumerators, definition);
+        
         if (extendedEnumerators.length) {
             model.export = 'enum';
             model.type = 'string';
             model.base = 'string';
             model.enum.push(...extendedEnumerators);
             model.default = getModelDefault(definition, model);
+
             return model;
         }
     }

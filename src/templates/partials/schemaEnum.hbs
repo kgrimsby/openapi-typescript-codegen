@@ -9,4 +9,15 @@
 {{#if isNullable}}
 	isNullable: {{{isNullable}}},
 {{/if}}
+{{#if enum}}
+	enums: [
+		{{#each enum}}
+		{
+			name: '{{{name}}}',
+			type: '{{{type}}}',
+			value: {{{value}}},
+		},
+		{{/each}}
+	],
+{{/if}}
 }

@@ -26,6 +26,11 @@ export const writeClientSchemas = async (
     indent: Indent
 ): Promise<void> => {
     for (const model of models) {
+        //console.log(model)
+        if (model.name === 'JaxMetaType') {
+            console.log(model)
+        }
+        
         const file = resolve(outputPath, `$${model.name}.ts`);
         const templateResult = templates.exports.schema({
             ...model,
