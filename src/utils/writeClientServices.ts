@@ -33,11 +33,17 @@ export const writeClientServices = async (
     clientName?: string
 ): Promise<void> => {
     for (const service of services) {
-        /*
-        service.operations.map(o => {
-            console.log(o)
-        })
-        */
+        if (service.name === 'Meta') {
+            console.log(service)
+            /*
+            service.operations.map(o => {
+                console.log(o.name)
+                console.log(o.parametersBody)
+            })
+            */
+        }
+        
+
         const file = resolve(outputPath, `${service.name}${postfix}.ts`);
         const templateResult = templates.exports.service({
             ...service,

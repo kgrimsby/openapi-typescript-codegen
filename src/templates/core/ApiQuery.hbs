@@ -8,4 +8,5 @@ export type ApiQuery<T, R> = {
     readonly query?: { [key: string]: string }
     readonly path?: { [key: string]: string }
     params?: R;
+    readonly bodyJsonModel?: string;
 };
