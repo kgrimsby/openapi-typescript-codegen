@@ -7,6 +7,9 @@
 		type: '{{{base}}}',
 	},
 {{/if}}
+{{#if title}}
+	title: `{{{escapeDescription title}}}`,
+{{/if}}
 {{#if isReadOnly}}
 	isReadOnly: {{{isReadOnly}}},
 {{/if}}
